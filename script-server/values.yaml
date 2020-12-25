@@ -1,0 +1,31 @@
+image:
+  name: "bugy/script-server"
+  tag: ""
+  pullPolicy: IfNotPresent
+
+deployment:
+  enabled: true
+  annotations: {}
+  labels: {}
+
+service:
+  enabled: true
+  type: LoadBalancer
+  annotations: {}
+  labels: {}
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 128Mi
+  storageClass: ""
+  path: /data
+  annotations: {}
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "64Mi"
+  limits:
+    cpu: "1"
+    memory: "1Gi"
