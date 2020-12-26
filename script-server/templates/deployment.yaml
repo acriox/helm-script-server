@@ -6,8 +6,8 @@ metadata:
   name: {{ template "script-server.fullname" . }}
   labels:
     app.kubernetes.io/name: {{ template "script-server.name" . }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
     helm.sh/chart: {{ template "script-server.chart" . }}
   {{- with .Values.deployment.labels }}
   {{- toYaml . | nindent 4 }}
@@ -26,8 +26,8 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ template "script-server.name" . }}
-        app.kubernetes.io/managed-by: {{ .Release.Service }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
         helm.sh/chart: {{ template "script-server.chart" . }}
     spec:
       containers:
@@ -40,13 +40,11 @@ spec:
               protocol: TCP
           resources:
             {{- with .Values.resources }}
-            {{- toYaml . | nindent 10 }}
+            {{- toYaml . | nindent 12 }}
             {{- end }}
-          {{- if .Values.persistence.enabled }}
           volumeMounts:
             - name: data
               mountPath: {{ .Values.persistence.path }}
-          {{- end }}
       volumes:
         - name: data
           {{- if .Values.persistence.enabled }}

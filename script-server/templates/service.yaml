@@ -6,8 +6,8 @@ metadata:
   name: {{ template "script-server.fullname" . }}
   labels:
     app.kubernetes.io/name: {{ template "script-server.name" . }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
     helm.sh/chart: {{ template "script-server.chart" . }}
   {{- with .Values.service.labels }}
   {{- toYaml . | nindent 4 }}
@@ -17,8 +17,7 @@ metadata:
   {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- with .Values.service }}
-  type: {{ .type }}
+  type: {{ .Values.service.type }}
   ports:
     - port: 80
       targetPort: 5000
@@ -26,5 +25,4 @@ spec:
   selector:
     app.kubernetes.io/name: {{ template "script-server.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
-  {{- end }}
 {{- end -}}

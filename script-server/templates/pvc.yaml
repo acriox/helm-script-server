@@ -6,8 +6,8 @@ metadata:
   name: {{ template "script-server.fullname" . }}
   labels:
     app.kubernetes.io/name: {{ template "script-server.name" . }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
     helm.sh/chart: {{ template "script-server.chart" . }}
   annotations:
   {{- with .Values.persistence.annotations  }}
