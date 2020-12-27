@@ -45,6 +45,13 @@ spec:
           volumeMounts:
             - name: data
               mountPath: {{ .Values.persistence.path }}
+              subPath: data
+            - name: data
+              mountPath: "/app/conf/runners"
+              subPath: runners
+            - name: data
+              mountPath: "/app/conf/schedules"
+              subPath: schedules
       volumes:
         - name: data
           {{- if .Values.persistence.enabled }}

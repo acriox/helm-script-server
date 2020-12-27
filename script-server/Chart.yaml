@@ -5,7 +5,7 @@ keywords:
   - bash
   - webui
   - script-server
-version: 1.0.0
+version: 1.0.1
 appVersion: 1.16.0
 type: application
 sources:
